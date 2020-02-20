@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="IeasSubC19.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:local="clr-namespace:IeasSubC19"
+             xmlns:mylib="clr-namespace:IeasLibrary;assembly=IeasLibrary"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+             dx:ThemeManager.ThemeName="Office2013LightGray"
+             mc:Ignorable="d" 
+           d:DesignHeight="550" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="350"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="62"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Canvas Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBlock x:Name="textBlock" Text="인사발령번호" Canvas.Left="28" Canvas.Top="29"/>
+            <TextBox x:Name="searchText" CharacterCasing="Upper" Height="23" Width="149" Canvas.Left="109" Canvas.Top="25"/>
+        </Canvas>
+        <dxe:ComboBoxEdit Grid.Column="1" Margin="219,380,361,620" Grid.Row="1"  />
+        <dxg:GridControl Grid.Column="0" Grid.Row="1"  AutoGenerateColumns="None" Margin="1,0,1,1" SelectionMode="None" Name="dataGrid">
+            <dxg:GridControl.View>
+                <dxg:TableView x:Name="tableView" AllowEditing="False" NavigationStyle="Row" ShowGroupPanel="False" VerticalScrollbarVisibility="Auto" Margin="0,0,0,-2"/>
+            </dxg:GridControl.View>
+            <dxg:GridColumn Binding="{Binding Papr_appno}"  Header="인사발령번호" Width="100" />
+            <dxg:GridColumn Binding="{Binding Papr_content}"  Header="발령내용" Width="*"/>
+            <dxg:GridColumn Binding="{Binding Papr_num}"  Header="발령인원수" Width="80"/>
+            <dxg:GridColumn Binding="{Binding Papr_date}"  Header="시행일자" Width="100" />
+
+        </dxg:GridControl>
+        <Border
+            DataContext="{Binding SelectedItem,ElementName=dataGrid}"
+            BorderBrush="Gray" BorderThickness="1" Margin="1,1,1,1" Grid.Row="1" Grid.Column="1">
+            <Canvas Margin="10">
+
+                <TextBlock Text="인사발령번호" Canvas.Left="30" Canvas.Top="34" Width="80" />
+                <TextBox x:Name="papr_appno" TabIndex="1" Focusable="True" MaxLength="10" Text="{Binding Papr_appno, Mode=TwoWay, ValidatesOnDataErrors=True}" Width="204" Height="23" Margin="0" Canvas.Left="115" Canvas.Top="30"  />
+                <TextBlock Text="시행일자" Canvas.Left="30" Canvas.Top="60" Width="80" />
+                <DatePicker x:Name="papr_date" Height="24" TabIndex="1" Focusable="True" Text="{Binding Papr_date, Mode=TwoWay, ValidatesOnDataErrors=True}" Width="204" Margin="0" Canvas.Left="115" Canvas.Top="57"  />
+                <TextBlock Text="발령내용" Canvas.Left="30" Canvas.Top="88" Width="70" />
+                <TextBox x:Name="papr_content" Text="{Binding Papr_content, Mode=TwoWay, ValidatesOnDataErrors=True}" Canvas.Left="115" Height="23" Canvas.Top="84" Width="204"/>
+                <TextBlock Text="발령인원수" Canvas.Left="30" Canvas.Top="115" Width="80"/>
+                <dxe:TextEdit x:Name="papr_num" Text="{Binding Papr_num, Mode=TwoWay, ValidatesOnDataErrors=True}" Mask="###,0" MaskType ="Numeric" Canvas.Left="115" Height="23" Canvas.Top="111" Width="204"/>
+
+            </Canvas>
+        </Border>
+    </Grid>
+</UserControl>

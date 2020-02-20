@@ -1,0 +1,14 @@
+C:\Ieas2020\sublibs\IeasSubC29.dll.config
+C:\Ieas2020\sublibs\IeasSubC29.dll
+C:\Ieas2020\sublibs\IeasSubC29.pdb
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC29\obj\Debug\IeasSubC29.csprojAssemblyReference.cache
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC29\obj\Debug\UcSubC29.g.cs
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC29\obj\Debug\IeasSubC29_MarkupCompile.cache
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC29\obj\Debug\IeasSubC29_MarkupCompile.lref
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC29\obj\Debug\UcSubC29.baml
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC29\obj\Debug\IeasSubC29.g.resources
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC29\obj\Debug\IeasSubC29.dll.licenses
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC29\obj\Debug\IeasSubC29.csproj.CoreCompileInputs.cache
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC29\obj\Debug\IeasSubC29.csproj.CopyComplete
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC29\obj\Debug\IeasSubC29.dll
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC29\obj\Debug\IeasSubC29.pdb

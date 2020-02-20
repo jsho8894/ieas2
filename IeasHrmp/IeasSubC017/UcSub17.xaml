@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="IeasSubC17.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:local="clr-namespace:IeasSubC17"
+             xmlns:mylib="clr-namespace:IeasLibrary;assembly=IeasLibrary"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+             dx:ThemeManager.ThemeName="Office2013LightGray"
+             mc:Ignorable="d" 
+           d:DesignHeight="650" d:DesignWidth="1264" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="350"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="62"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Canvas Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBlock x:Name="textBlock" Text="인사발령번호" Canvas.Left="28" Canvas.Top="28"/>
+            <TextBox x:Name="searchText" CharacterCasing="Upper" Height="23" Width="143" Canvas.Left="108" Canvas.Top="25"/>
+            <TextBox x:Name="searchText_Copy" CharacterCasing="Upper" Height="23" Width="300" Canvas.Left="255" Canvas.Top="25"/>
+
+        </Canvas>
+        <dxe:ComboBoxEdit Grid.Column="1" Margin="219,380,361,620" Grid.Row="1"  />
+        <dxg:GridControl Grid.Column="0" Grid.Row="1"  AutoGenerateColumns="None" Margin="1,0,1,1" SelectionMode="None" Name="dataGrid">
+            <dxg:GridControl.View>
+                <dxg:TableView x:Name="tableView" AllowEditing="False" NavigationStyle="Row" ShowGroupPanel="False" VerticalScrollbarVisibility="Auto" Margin="0,0,0,-2"/>
+            </dxg:GridControl.View>
+            <dxg:GridColumn Binding="{Binding User_id}"  Header="인사발령번호" Width="120" Fixed="Left"/>
+            <dxg:GridColumn Binding="{Binding User_id}"  Header="사원번호" Width="60" Fixed="Left"/>
+            <dxg:GridColumn Binding="{Binding User_id}"  Header="사원명" Width="60" Fixed="Left"/>
+            <dxg:GridColumn Binding="{Binding User_id}"  Header="발령종류" Width="120"/>
+            <dxg:GridColumn Binding="{Binding User_id}"  Header="발령내용" Width="*"/>
+            <dxg:GridColumn Binding="{Binding User_id}"  Header="발령권자" Width="62"/>
+            <dxg:GridColumn Binding="{Binding User_name}"  Header="직급" Width="*"/>
+            <dxg:GridColumn Binding="{Binding Dept_name}"  Header="직책" Width="*"/>
+            <dxg:GridColumn Binding="{Binding User_type}"  Header="소속" Width="*"/>
+            <dxg:GridColumn Binding="{Binding User_id}"  Header="비고" Width="*"/>
+        </dxg:GridControl>
+        <Canvas Margin="1,0,0,0" Grid.Column="1" Grid.Row="2">
+            <Border Grid.Column="1" BorderThickness="1" BorderBrush="Black" Grid.Row="2" Height="588" Canvas.Left="0" Width="349"/>
+            <TextBlock Text="성명" Canvas.Left="30" Canvas.Top="34" Width="27" />
+            <TextBox x:Name="title_Copy8" TabIndex="1" Focusable="True" MaxLength="10" Text="{Binding Title, Mode=TwoWay, ValidatesOnDataErrors=True}" Width="79" Height="23" Margin="0" Canvas.Left="108" Canvas.Top="30"  />
+            <TextBlock Text="사원번호" Canvas.Left="191" Canvas.Top="33" Width="46" />
+            <TextBox x:Name="title_Copy9" TabIndex="1" Focusable="True" MaxLength="10" Text="{Binding Title, Mode=TwoWay, ValidatesOnDataErrors=True}" Width="76" Height="23" Margin="0" Canvas.Left="243" Canvas.Top="30"  />
+            <TextBlock Text="발령일자" Canvas.Left="30" Canvas.Top="62" Width="55" />
+            <DatePicker Canvas.Left="108" Height="24" Canvas.Top="57" Width="211"/>
+            <TextBlock Text="만료일자" Canvas.Left="30" Canvas.Top="88" Width="48" />
+            <DatePicker x:Name="title_Copy11" TabIndex="2" Focusable="True" Text="{Binding Title, Mode=TwoWay, ValidatesOnDataErrors=True}" Width="211" Height="23" Margin="0" Canvas.Left="108" Canvas.Top="84"  />
+            <TextBlock Text="발령종류" Canvas.Left="30" Canvas.Top="115" Width="55"/>
+            <ComboBox Canvas.Left="108" Height="23" Canvas.Top="110" Width="211"/>
+            <TextBlock Text="발령내용" Canvas.Left="30" Canvas.Top="142" Width="48" />
+            <TextBox x:Name="title_Copy3" TabIndex="2" Focusable="True" MaxLength="10" Text="{Binding Title, Mode=TwoWay, ValidatesOnDataErrors=True}" Width="211" Height="23" Margin="0" Canvas.Left="108" Canvas.Top="137"  />
+            <TextBlock Text="발령권자" Canvas.Left="30" Canvas.Top="169" Width="55" />
+            <TextBox x:Name="title_Copy" TabIndex="2" Focusable="True" MaxLength="10" Text="{Binding Title, Mode=TwoWay, ValidatesOnDataErrors=True}" Width="211" Height="23" Margin="0" Canvas.Left="108" Canvas.Top="164"  />
+            <TextBlock Text="발령근거" Canvas.Left="30" Canvas.Top="196" Width="55" />
+            <TextBox x:Name="title_Copy1" TabIndex="2" Focusable="True" MaxLength="10" Text="{Binding Title, Mode=TwoWay, ValidatesOnDataErrors=True}" Width="211" Height="23" Margin="0" Canvas.Left="108" Canvas.Top="191"  />
+            <TextBlock Text="비고" Canvas.Left="30" Canvas.Top="223" Width="55" />
+            <TextBox x:Name="title_Copy4" TabIndex="2" Focusable="True" MaxLength="10" Text="{Binding Title, Mode=TwoWay, ValidatesOnDataErrors=True}" Width="211" Height="23" Margin="0" Canvas.Left="108" Canvas.Top="218"  />
+            <TextBlock Text="직급코드" Canvas.Left="30" Canvas.Top="250" Width="55" />
+            <ComboBox x:Name="title_Copy5" TabIndex="2" Focusable="True" Text="{Binding Title, Mode=TwoWay, ValidatesOnDataErrors=True}" Width="211" Height="23" Margin="0" Canvas.Left="108" Canvas.Top="245"  />
+            <TextBlock Text="직책코드" Canvas.Left="30" Canvas.Top="276" Width="55" />
+            <ComboBox x:Name="title_Copy6" TabIndex="2" Focusable="True" Text="{Binding Title, Mode=TwoWay, ValidatesOnDataErrors=True}" Width="211" Height="23" Margin="0" Canvas.Left="108" Canvas.Top="272"  />
+            <TextBlock Text="소속코드" Canvas.Left="30" Canvas.Top="303" Width="55" />
+            <TextBox x:Name="title_Copy7" TabIndex="2" Focusable="True" MaxLength="10" Text="{Binding Title, Mode=TwoWay, ValidatesOnDataErrors=True}" Width="211" Height="23" Margin="0" Canvas.Left="108" Canvas.Top="299"  />
+            <Image Height="21" Source="search.png" Canvas.Left="297" Canvas.Top="300" Width="22"/>
+            <TextBlock Text="위원회" Canvas.Left="30" Canvas.Top="330" Width="55" />
+            <TextBox x:Name="title_Copy2" TabIndex="2" Focusable="True" MaxLength="10" Text="{Binding Title, Mode=TwoWay, ValidatesOnDataErrors=True}" Width="211" Height="23" Margin="0" Canvas.Left="108" Canvas.Top="326"  />
+           
+            <Image Height="21" Source="search.png" Canvas.Left="297" Canvas.Top="327" Width="22"/>
+
+        </Canvas>
+    </Grid>
+</UserControl>

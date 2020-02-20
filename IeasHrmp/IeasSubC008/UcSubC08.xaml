@@ -1,0 +1,276 @@
+﻿<UserControl x:Class="IeasSubC08.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IeasSubC08"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:mylib="clr-namespace:IeasLibrary;assembly=IeasLibrary"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+             dx:ThemeManager.ThemeName="Office2013LightGray"
+             mc:Ignorable="d" 
+             d:DesignHeight="820" d:DesignWidth="1264" Loaded="UserControl_Loaded">
+    <Grid HorizontalAlignment="Right" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="847"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="62"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="300"/>
+        </Grid.RowDefinitions>
+        <Canvas Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <dxg:GridControl x:Name="dataGrid" AutoGenerateColumns="None" Margin="0,0,0,0" Grid.RowSpan="2" Grid.Column="0" Grid.Row="1" >
+            <dxg:GridControl.View>
+                <dxg:TableView x:Name="tableView" AllowEditing="False" NavigationStyle="Row" ShowGroupPanel="False" MouseDoubleClick="TableView_MouseDoubleClick"/>
+            </dxg:GridControl.View>
+            <dxg:GridColumn x:Name="BAS_EMPNO" Binding="{Binding BAS_EMPNO}" Header="사번" Width="60"/>
+            <dxg:GridColumn x:Name="BAS_NAME" Binding="{Binding BAS_NAME}" Header="성명" Width="60"/>
+            <dxg:GridColumn x:Name="BAS_DEPT" Binding="{Binding BAS_DEPT}" Header="소속" Width="*"/>
+            <dxg:GridColumn x:Name="BAS_POS" Binding="{Binding BAS_POS}" Header="직급" Width="60"/>
+        </dxg:GridControl>
+
+        <TabControl x:Name="tabControl_Copy"  Grid.Row="1" Grid.Column="1">
+            <TabItem Header="기본인적사항">
+                <Border  DataContext="{Binding SelectedItem, ElementName=dataGrid}"
+                    BorderBrush="Gray" BorderThickness="1" Margin="1,1,1,0"  >
+                    <Canvas>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="19"  TextAlignment="Left" Text="사원번호" Canvas.Left="145" Canvas.Top="17"/>
+                        <TextBox x:Name="bas_empno" Text="{Binding Bas_empno, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" Canvas.Left="245" Canvas.Top="15"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="16" TextAlignment="Left" Text="주민등록번호" Canvas.Left="361" Canvas.Top="18"/>
+                        <TextBox x:Name="bas_resno" Text="{Binding Bas_resno, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="461" Canvas.Top="15"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="20" TextAlignment="Left" Text="성별" Canvas.Left="581" Canvas.Top="18"/>
+                        <TextBox x:Name="bas_sex" Text="{Binding Bas_sex, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="681" Canvas.Top="15"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="20" TextAlignment="Left" Text="성명(한글)" Canvas.Left="145" Canvas.Top="46"/>
+                        <TextBox x:Name="bas_name" Text="{Binding Bas_name, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" Canvas.Left="245" Canvas.Top="43"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="20" TextAlignment="Left" Text="성명(한자)" Canvas.Left="362" Canvas.Top="47"/>
+                        <TextBox x:Name="bas_cname" Text="{Binding Bas_cname, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="461" Canvas.Top="43"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="19" TextAlignment="Left" Text="성명(영문)" Canvas.Left="581" Canvas.Top="47"/>
+                        <TextBox x:Name="bas_ename" Text="{Binding Bas_ename, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="681" Canvas.Top="43"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="19" TextAlignment="Left" Text="국적" Canvas.Left="145" Canvas.Top="74"/>
+                        <TextBox x:Name="bas_nat" Text="{Binding Bas_nat, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" Canvas.Left="245" Canvas.Top="71"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="19" TextAlignment="Left" Text="본교출신여부" Canvas.Left="362" Canvas.Top="74"/>
+                        <TextBox x:Name="bas_bsks" Text="{Binding Bas_bsks, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="461" Canvas.Top="71"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="16" TextAlignment="Left" Text="교총가입여부" Canvas.Left="581" Canvas.Top="75"/>
+                        <TextBox x:Name="bas_kfta" Text="{Binding Bas_kfta, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="681" Canvas.Top="71"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="21" TextAlignment="Left" Text="연락처(휴대폰)" Canvas.Left="145" Canvas.Top="103"/>
+                        <TextBox x:Name="bas_hdpno" Text="{Binding Bas_hdpno, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" Canvas.Left="245" Canvas.Top="99"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="19" TextAlignment="Left" Text="연락처(집)" Canvas.Left="362" Canvas.Top="102"/>
+                        <TextBox x:Name="bas_telno" Text="{Binding Bas_telno, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="461" Canvas.Top="99"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="17" TextAlignment="Left" Text="외국인여권번호" Canvas.Left="582" Canvas.Top="104"/>
+                        <TextBox x:Name="bas_passport" Text="{Binding Bas_passport, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="681" Canvas.Top="99"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="16" TextAlignment="Left" Text="이메일" Canvas.Left="145" Canvas.Top="130"/>
+                        <TextBox x:Name="bas_email" Text="{Binding Bas_email, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="336" Canvas.Left="245" Canvas.Top="125"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="18" TextAlignment="Left" Text="외국인체류자격" Canvas.Left="581" Canvas.Top="129"/>
+                        <TextBox x:Name="bas_frq" Text="{Binding Bas_frq, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="681" Canvas.Top="125"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" Height="18" TextAlignment="Left" Text="우편번호" Canvas.Left="30" Canvas.Top="163"/>
+                        <TextBox x:Name="bas_zip" Text="{Binding Bas_zip, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Canvas.Left="130" Canvas.Top="160"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="19" TextAlignment="Left" Text="주소" Canvas.Left="30" Canvas.Top="188"/>
+                        <TextBox x:Name="bas_zipaddr" Text="{Binding Bas_zipaddr, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="671" Canvas.Left="130" Canvas.Top="188"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Height="18" TextAlignment="Left" Text="타대학근무년수" Canvas.Left="30" Canvas.Top="235" />
+                        <TextBox x:Name="bas_univ_wys" Text="{Binding Bas_univ_wys, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Canvas.Left="130" Canvas.Top="233"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="99" Height="18" TextAlignment="Left" Text="산업체근무년수" Canvas.Left="289" Canvas.Top="247"/>
+                        <TextBox x:Name="bas_ind_wys" Text="{Binding Bas_ind_wys, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="153" Canvas.Left="401" Canvas.Top="233"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" Height="23" TextAlignment="Left" Text="병역(복무구분)" Canvas.Left="558" Canvas.Top="235"/>
+                        <TextBox x:Name="bas_mil_sta" Text="{Binding Bas_mil_sta, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Canvas.Left="659" Canvas.Top="233"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="17" TextAlignment="Left" Text="군번" Canvas.Left="289" Canvas.Top="275"/>
+                        <TextBox x:Name="bas_mil_no" Text="{Binding Bas_mil_no, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="153" Canvas.Left="401" Canvas.Top="261"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18" TextAlignment="Left" Text="군별" Canvas.Left="559" Canvas.Top="263"/>
+                        <TextBox x:Name="bas_mil_mil" Text="{Binding Bas_mil_mil, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Canvas.Left="659" Canvas.Top="261"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Height="15" TextAlignment="Left" Text="계급" Canvas.Left="30" Canvas.Top="265"/>
+                        <TextBox x:Name="bas_mil_rnk" Text="{Binding Bas_mil_rnk, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Canvas.Left="130" Canvas.Top="261"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="15" TextAlignment="Left" Text="복무시작일" Canvas.Left="30" Canvas.Top="293"/>
+                        <TextBox x:Name="bas_mil_sdate" Text="{Binding Bas_mil_sdate, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Canvas.Left="130" Canvas.Top="288"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18" TextAlignment="Left" Text="복무종료일" Canvas.Left="289" Canvas.Top="302"/>
+                        <TextBox x:Name="bas_mil_edate" Text="{Binding Bas_mil_edate, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="153" Canvas.Left="401" Canvas.Top="289"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" Height="17" TextAlignment="Left" Text="최종학위(취득)" Canvas.Left="30" Canvas.Top="320"/>
+                        <TextBox x:Name="bas_ad1" Text="{Binding Bas_ad1, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Canvas.Left="130" Canvas.Top="317"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="17" TextAlignment="Left" Text="최종학위(수료)" Canvas.Left="289" Canvas.Top="320"/>
+                        <TextBox x:Name="bas_ad2" Text="{Binding Bas_ad2, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="153" Canvas.Left="401" Canvas.Top="317"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="19" TextAlignment="Left" Text="임용기간" Canvas.Left="559" Canvas.Top="291"/>
+                        <TextBox x:Name="bas_emp_period" Text="{Binding Bas_emp_period, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Canvas.Left="659" Canvas.Top="289"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" Height="20" TextAlignment="Left" Text="참고사항" Canvas.Left="30" Canvas.Top="344"/>
+                        <TextBox x:Name="bas_rmk" HorizontalAlignment="Left" Height="45" Width="671" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="130" Canvas.Top="344"/>
+                    </Canvas>
+                </Border>
+            </TabItem>
+            <TabItem Header="인사정보">
+                <Border  DataContext="{Binding SelectedItem, ElementName=dataGrid}"
+                    BorderBrush="Gray" BorderThickness="1" Margin="1,1,1,0"  >
+                    <Canvas >
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="16" TextAlignment="Left" Text="재직상태" Grid.ColumnSpan="2" Canvas.Left="30" Canvas.Top="30"/>
+                        <TextBox x:Name="bas_wsta" Text="{Binding Bas_wsta, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" RenderTransformOrigin="0.455,0.522" Canvas.Left="126" Canvas.Top="30"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="16" TextAlignment="Left" Text="신분구분" Canvas.Left="285" Canvas.Top="33"/>
+                        <TextBox x:Name="bas_sts" Text="{Binding Bas_sts, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Canvas.Left="381" Canvas.Top="30"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="19" TextAlignment="Left" Text="직급" Canvas.Left="541" Canvas.Top="30"/>
+                        <TextBox x:Name="bas_pos" Text="{Binding Bas_pos, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Canvas.Left="626" Canvas.Top="30"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="16" TextAlignment="Left" Text="직급구분1" Canvas.Left="30" Canvas.Top="61"/>
+                        <TextBox x:Name="bas_pt1" Text="{Binding Bas_pt1, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Canvas.Left="126" Canvas.Top="58"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="16" TextAlignment="Left" Text="직급구분2" Canvas.Left="285" Canvas.Top="61"/>
+                        <TextBox x:Name="bas_pt2" Text="{Binding Bas_pt2, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Canvas.Left="381" Canvas.Top="58"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="19" TextAlignment="Left" Text="직급구분3" Canvas.Left="541" Canvas.Top="60"/>
+                        <TextBox x:Name="bas_pt3" Text="{Binding Bas_pt3, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Canvas.Left="626" Canvas.Top="58"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="16" TextAlignment="Left" Text="직책" Canvas.Left="30" Canvas.Top="91"/>
+                        <TextBox x:Name="bas_dut" Text="{Binding Bas_dut, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Canvas.Left="126" Canvas.Top="86"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="16" TextAlignment="Left" Text="부서(소속)" Canvas.Left="286" Canvas.Top="89"/>
+                        <TextBox x:Name="bas_dept" Text="{Binding Bas_dept, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Canvas.Left="381" Canvas.Top="86"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="15" TextAlignment="Left" Text="부서(소속)2" Canvas.Left="541" Canvas.Top="90"/>
+                        <TextBox x:Name="bas_dept2" Text="{Binding Bas_dept2, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Canvas.Left="626" Canvas.Top="86"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="16" TextAlignment="Left" Text="현직급일자" RenderTransformOrigin="0.492,0.507" Canvas.Left="30" Canvas.Top="120"/>
+                        <TextBox x:Name="bas_cpodate" Text="{Binding Bas_cpodate, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Canvas.Left="126" Canvas.Top="114"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="16" TextAlignment="Left" Text="현직책일자" Canvas.Left="285" Canvas.Top="117"/>
+                        <TextBox x:Name="bas_cdudate" Text="{Binding Bas_cdudate, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Canvas.Left="381" Canvas.Top="114"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="19" TextAlignment="Left" Text="현부서일자" RenderTransformOrigin="0.462,0.478" Canvas.Left="541" Canvas.Top="117"/>
+                        <TextBox x:Name="bas_cdedate" Text="{Binding Bas_cdedate, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Canvas.Left="626" Canvas.Top="114"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="17" TextAlignment="Left" Text="담당과목" Canvas.Left="30" Canvas.Top="146"/>
+                        <TextBox x:Name="bas_subject" Text="{Binding Bas_subject, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Canvas.Left="126" Canvas.Top="142"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="16" TextAlignment="Left" Text="학과장(학과)" Canvas.Left="286" Canvas.Top="146"/>
+                        <TextBox x:Name="bas_dean_dept" Text="{Binding Bas_dean_dept, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Canvas.Left="381" Canvas.Top="142"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="19" TextAlignment="Left" Text="연봉계약월" Canvas.Left="541" Canvas.Top="145"/>
+                        <TextBox x:Name="bas_cont_mm" Text="{Binding Bas_cont_mm, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Canvas.Left="626" Canvas.Top="142"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="23" TextAlignment="Left" Text="본직(기관명)" Canvas.Left="30" Canvas.Top="170"/>
+                        <TextBox x:Name="bas_job_comnm" Text="{Binding Bas_job_comnm, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Canvas.Left="126" Canvas.Top="170"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="16" TextAlignment="Left" Text="본직(담당업무)" Canvas.Left="285" Canvas.Top="174"/>
+                        <TextBox x:Name="bas_job_pos" Text="{Binding Bas_job_pos, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Right" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Canvas.Left="381" Canvas.Top="170"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="19" TextAlignment="Left" Text="본직(전화번호)" Canvas.Left="541" Canvas.Top="173"/>
+                        <TextBox x:Name="bas_job_telno" Text="{Binding Bas_job_telno, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Canvas.Left="626" Canvas.Top="170"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="23" TextAlignment="Left" Text="퇴사일자" Canvas.Left="30" Canvas.Top="198"/>
+                        <TextBox x:Name="bas_retdate" Text="{Binding Bas_retdate, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Canvas.Left="126" Canvas.Top="198"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="16" TextAlignment="Left" Text="퇴직사유" RenderTransformOrigin="0.575,0.478" Canvas.Left="285" Canvas.Top="201"/>
+                        <TextBox x:Name="bas_res" Text="{Binding Bas_res, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Canvas.Left="381" Canvas.Top="198"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="23" TextAlignment="Left" Text="복직일자" Canvas.Left="30" Canvas.Top="226"/>
+                        <TextBox x:Name="bas_reidate" Text="{Binding Bas_reidate, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Canvas.Left="126" Canvas.Top="226"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18" TextAlignment="Left" Text="휴직일자" Canvas.Left="30" Canvas.Top="257"/>
+                        <TextBox x:Name="bas_levdate" Text="{Binding Bas_levdate, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Canvas.Left="126" Canvas.Top="254"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="16" TextAlignment="Left" Text="휴직사유" Canvas.Left="285" Canvas.Top="257"/>
+                        <TextBox x:Name="bas_loa" Text="{Binding Bas_loa, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Canvas.Left="381" Canvas.Top="254"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" Height="17" TextAlignment="Left" Text="최근임용일(시작)" FontSize="12" Canvas.Left="30" Canvas.Top="285"/>
+                        <TextBox x:Name="bas_emp_sdate" Text="{Binding Bas_sdate, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Canvas.Left="126" Canvas.Top="282"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Height="16" TextAlignment="Left" Text="최근임용일(종료)" FontSize="12" Canvas.Left="286" Canvas.Top="285"/>
+                        <TextBox x:Name="bas_emp_edate" Text="{Binding Bas_edate, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Canvas.Left="381" Canvas.Top="282"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" Height="16" TextAlignment="Left" Text="재임용대상년월" Canvas.Left="30" Canvas.Top="312"/>
+                        <TextBox x:Name="bas_remp_mm" Text="{Binding Bas_remp_mm, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Canvas.Left="126" Canvas.Top="308"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Height="18" TextAlignment="Left" Text="차기임용예정일" Canvas.Left="286" Canvas.Top="310"/>
+                        <TextBox x:Name="bas_nemp_date" Text="{Binding Bas_nemp_date, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="1.889,-4.522" Canvas.Left="381" Canvas.Top="308"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="18" TextAlignment="Left" Text="전임 임용일자" Canvas.Left="541" Canvas.Top="284"/>
+                        <TextBox x:Name="bas_femp_date" Text="{Binding Bas_femp_date, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Canvas.Left="626" Canvas.Top="282"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="15" TextAlignment="Left" Text="법인 임용일" Canvas.Left="541" Canvas.Top="310"/>
+                        <TextBox x:Name="bas_cemp_date" Text="{Binding Bas_cemp_date, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Canvas.Left="626" Canvas.Top="308"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="87" Height="17" TextAlignment="Left" Text="대학최초임용일" Canvas.Left="541" Canvas.Top="257"/>
+                        <TextBox x:Name="bas_emp_date" Text="{Binding Bas_empdate, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Canvas.Left="626" Canvas.Top="254"/>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Height="18" TextAlignment="Left" Text="퇴사예정일(정년)" Canvas.Left="286" Canvas.Top="228"/>
+                        <TextBox x:Name="bas_resdate" Text="{Binding Bas_resdate, Mode=TwoWay, ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Canvas.Left="381" Canvas.Top="226"/>
+
+                    </Canvas>
+                </Border>
+            </TabItem>
+        </TabControl>
+        <TabControl x:Name="tabControl"   Grid.Column="1" Grid.Row="2" >
+            <TabItem Header="직책/보직" GotFocus="TabItem_GotFocus" Tag="1">
+                <Grid Background="#FFE5E5E5">
+                    <dxg:GridControl x:Name="dataGrid1" AutoGenerateColumns="None"  Height="250" Width="821">
+                        <dxg:GridControl.View>
+                            <dxg:TableView x:Name="tableView1" HorizontalScrollbarVisibility="Auto" AllowEditing="False" NavigationStyle="Row" ShowGroupPanel="False" Margin="5"/>
+                        </dxg:GridControl.View>
+                        <dxg:GridColumn Binding="{Binding DUTY_DUTCD}" Header="직책" Width="*"/>
+                        <dxg:GridColumn Binding="{Binding DUTY_SDATE}" Header="임명일자" Width="*"/>
+                        <dxg:GridColumn Binding="{Binding DUTY_EDATE}" Header="임면일자" Width="*"/>
+                        <dxg:GridColumn Binding="{Binding DUTY_REPT}" Header="대표직책여부" Width="*"/>
+                    </dxg:GridControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="위원회" GotFocus="TabItem_GotFocus" Tag="2">
+                <Grid Background="#FFE5E5E5">
+                    <dxg:GridControl  x:Name="dataGrid2" AutoGenerateColumns="None"  Height="250" Width="821">
+                        <dxg:GridControl.View>
+                            <dxg:TableView x:Name="tableView2" HorizontalScrollbarVisibility="Auto" AllowEditing="False" NavigationStyle="Row" ShowGroupPanel="False" Margin="5"/>
+                        </dxg:GridControl.View>
+                        <dxg:GridColumn Binding="{Binding CMT_CMTNM}" Header="위원회" Width="*"/>
+                        <dxg:GridColumn Binding="{Binding CMT_SDATE}" Header="임명일자" Width="*"/>
+                        <dxg:GridColumn Binding="{Binding CMT_EDATE}" Header="임면일자" Width="*"/>
+                    </dxg:GridControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="수상이력" GotFocus="TabItem_GotFocus" Tag="3">
+                <Grid Background="#FFE5E5E5">
+                    <dxg:GridControl  x:Name="dataGrid3" AutoGenerateColumns="None" Height="250" Width="821">
+                        <dxg:GridControl.View>
+                            <dxg:TableView x:Name="tableView3" HorizontalScrollbarVisibility="Auto" AllowEditing="False" NavigationStyle="Row" ShowGroupPanel="False" Margin="5"/>
+                        </dxg:GridControl.View>
+                        <dxg:GridColumn Binding="{Binding AWARD_NO}" Header="수여번호" Width="60"/>
+                        <dxg:GridColumn Binding="{Binding AWARD_DATE}" Header="수상일자" Width="60"/>
+                        <dxg:GridColumn Binding="{Binding AWARD_TYPE}" Header="수상종류" Width="120"/>
+                        <dxg:GridColumn Binding="{Binding AWARD_KIND}" Header="수상종별" Width="150"/>
+                        <dxg:GridColumn Binding="{Binding AWARD_ORGAN}" Header="수여자/시행처" Width="150"/>
+                        <dxg:GridColumn Binding="{Binding AWARD_INOUT}" Header="내외구분" Width="60"/>
+                        <dxg:GridColumn Binding="{Binding AWARD_POS}" Header="직급(당시)" Width="130"/>
+                        <dxg:GridColumn Binding="{Binding AWARD_DEPT}" Header="소속(당시)" Width="150"/>
+                        <dxg:GridColumn Binding="{Binding AWARD_CONTENT}" Header="수상내용" Width="300"/>
+                    </dxg:GridControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="징계이력" GotFocus="TabItem_GotFocus" Tag="4">
+                <Grid Background="#FFE5E5E5">
+                    <dxg:GridControl  x:Name="dataGrid4" AutoGenerateColumns="None"  Height="250" Width="821">
+                        <dxg:GridControl.View>
+                            <dxg:TableView x:Name="tableView4" HorizontalScrollbarVisibility="Auto" AllowEditing="False" NavigationStyle="Row" ShowGroupPanel="False" Margin="5" />
+                        </dxg:GridControl.View>
+                        <dxg:GridColumn Binding="{Binding PNM_DATE}" Header="징계일자" Width="120"/>
+                        <dxg:GridColumn Binding="{Binding PNM_TYPE}" Header="징계종류" Width="160"/>
+                        <dxg:GridColumn Binding="{Binding PNM_POS}" Header="직급(당시)" Width="200"/>
+                        <dxg:GridColumn Binding="{Binding PNM_DEPT}" Header="소속(당시)" Width="200"/>
+                        <dxg:GridColumn  Binding="{Binding PNM_CONTENT}" Header="징계내용" Width="400"/>
+                    </dxg:GridControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="학력사항"  GotFocus="TabItem_GotFocus" Tag="5">
+                <Grid Background="#FFE5E5E5">
+                    <dxg:GridControl  x:Name="dataGrid5" AutoGenerateColumns="None"  Height="250" Width="821">
+                        <dxg:GridControl.View>
+                            <dxg:TableView x:Name="tableView5" HorizontalScrollbarVisibility="Auto" AllowEditing="False" NavigationStyle="Row" ShowGroupPanel="False"  Margin="5"/>
+                        </dxg:GridControl.View>
+                        <dxg:GridColumn Binding="{Binding EDU_LOE}" Header="학위종류" Width="100"/>
+                        <dxg:GridColumn Binding="{Binding EDU_GRATYPE}" Header="취득구분" Width="120"/>
+                        <dxg:GridColumn Binding="{Binding EDU_ENTDATE}" Header="학위기간(입학일)" Width="110"/>
+                        <dxg:GridColumn Binding="{Binding EDU_GRADATE}" Header="학위기간(졸업일)" Width="110"/>
+                        <dxg:GridColumn Binding="{Binding EDU_ACQDATE}" Header="취득년월일" Width="82"/>
+                        <dxg:GridColumn Binding="{Binding EDU_SCHNM}" Header="학교명" Width="270"/>
+                        <dxg:GridColumn Binding="{Binding EDU_MAJDIV}" Header="전공계열" Width="100"/>
+                        <dxg:GridColumn Binding="{Binding EDU_MAJ}" Header="전공명" Width="100"/>
+                        <dxg:GridColumn Binding="{Binding EDU_DEGREE}" Header="학위명" Width="100"/>
+                        <dxg:GridColumn Binding="{Binding EDU_COUNTRY}" Header="취득국가" Width="120"/>
+                        <dxg:GridColumn Binding="{Binding EDU_MAJDEEP}" Header="전공심화과정여부" Width="120"/>
+                        <dxg:GridColumn Binding="{Binding EDU_LAST}" Header="최종여부" Width="80"/>
+                    </dxg:GridControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="타기관교육경력" GotFocus="TabItem_GotFocus" Tag="6">
+                <Grid Background="#FFE5E5E5">
+                    <dxg:GridControl  x:Name="dataGrid6" AutoGenerateColumns="None"  Height="250" Width="831">
+                        <dxg:GridControl.View>
+                            <dxg:TableView x:Name="tableView6" HorizontalScrollbarVisibility="Auto" AllowEditing="False" NavigationStyle="Row" ShowGroupPanel="False" Margin="5"/>
+                        </dxg:GridControl.View>
+                        <dxg:GridColumn Binding="{Binding LECC_SDATE}" Header="교육(시작)" Width="100"/>
+                        <dxg:GridColumn Binding="{Binding LECC_EDATE}" Header="교육(까지)" Width="100"/>
+                        <dxg:GridColumn Binding="{Binding LECC_EDUINST}" Header="교육기관" Width="287"/>
+                        <dxg:GridColumn Binding="{Binding LECC_POSITION}" Header="직책" Width="200"/>
+                        <dxg:GridColumn Binding="{Binding LECC_CAREER}" Header="경력인정" Width="100"/>
+                    </dxg:GridControl>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <TextBlock x:Name="textBlock" Text="사원번호" Margin="28,25,341,21"/>
+        <TextBox x:Name="searchText_empno" CharacterCasing="Upper" Margin="81,22,287,17"/>
+        <TextBlock x:Name="textBlock_Copy" Text="성명" Margin="135,25,258,21"/>
+        <TextBox x:Name="searchText_name" CharacterCasing="Upper" Margin="163,22,204,17"/>
+        <TextBlock x:Name="textBlock_Copy1" Text="직급" Grid.Column="1" Margin="11,25,812,21"/>
+        <ComboBox x:Name="searchText_pos" Grid.Column="1" Margin="39,22,708,17"/>
+        <TextBlock x:Name="textBlock_Copy2" Text="소속" Margin="218,25,175,21"/>
+        <TextBox x:Name="searchText_dept" Grid.ColumnSpan="2" Margin="249,22,837,17"/>
+        <Image Height="Auto" Source="search1.png" Width="Auto" MouseDown="Seach_user_id_MouseDown" Grid.ColumnSpan="2" Margin="402,23,838,17"/>
+    </Grid>
+</UserControl>

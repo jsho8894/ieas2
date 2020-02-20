@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="IeasSubC04.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:local="clr-namespace:IeasSubC04"
+             xmlns:mylib="clr-namespace:IeasLibrary;assembly=IeasLibrary"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+             dx:ThemeManager.ThemeName="Office2013LightGray"
+             mc:Ignorable="d" 
+           d:DesignHeight="600" d:DesignWidth="1264" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="500"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="62"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Canvas Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBlock x:Name="textBlock" Text="사원번호" Canvas.Left="28" Canvas.Top="28"/>
+            <TextBox x:Name="sel_bas_empno" CharacterCasing="Upper" Height="23" Width="50" Canvas.Left="81" Canvas.Top="25"/>
+            <TextBlock x:Name="textBlock_Copy" Text="사원명" Canvas.Left="135" Canvas.Top="28"/>
+            <TextBox x:Name="sel_bas_name" CharacterCasing="Upper" Height="23" Width="50" Canvas.Left="175" Canvas.Top="25"/>
+            <TextBlock x:Name="textBlock_Copy1" Text="직급" Canvas.Left="440" Canvas.Top="28"/>
+            <ComboBox x:Name="sel_bas_pos" Height="23" Width="100" Canvas.Left="466" Canvas.Top="25"/>
+            <TextBlock x:Name="textBlock_Copy2" Text="소속" Canvas.Left="229" Canvas.Top="28"/>
+            <TextBox x:Name="sel_bas_dept" Height="23" Width="178" Canvas.Left="258" Canvas.Top="25"/>
+            <Image Height="21" Source="search1.png" MouseDown="Seach_user_id_MouseDown" Canvas.Left="412" Canvas.Top="27" Width="22"/>
+        </Canvas>
+
+
+        <dxe:ComboBoxEdit Grid.Column="1" Margin="219,380,361,620" Grid.Row="1"  />
+        <dxg:GridControl x:Name="dataGrid2"  Grid.Column="0" Grid.Row="1" AutoGenerateColumns="None" Margin="1,0,1,1" SelectionMode="None">
+            <dxg:GridControl.View>
+                <dxg:TableView x:Name="tableView2" AllowEditing="False" NavigationStyle="Row" ShowGroupPanel="False" VerticalScrollbarVisibility="Auto" MouseDoubleClick="TableView2_MouseDoubleClick"/>
+            </dxg:GridControl.View>
+            <dxg:GridColumn Binding="{Binding BAS_EMPNO}"  Header="사원번호" Width="80" FieldName="pgm_id"/>
+            <dxg:GridColumn Binding="{Binding BAS_NAME}"  Header="성명" Width="100"/>
+            <dxg:GridColumn Binding="{Binding BAS_DEPT}"  Header="소속" Width="*"/>
+            <dxg:GridColumn Binding="{Binding BAS_POS}"  Header="직급" Width="*"/>
+        </dxg:GridControl>
+        <Border Grid.Column="1" Grid.Row="2" DataContext="{Binding SelectedItem, ElementName=dataGrid}"
+            BorderBrush="Gray" BorderThickness="1" Margin="1,1,1,0"    >
+            <Canvas Margin="1,0,0,0" Grid.Column="1" Grid.Row="1">
+                <dxg:GridControl x:Name="dataGrid" AutoGenerateColumns="None" SelectionMode="None"  Height="283" Canvas.Top="0" Width="498">
+                    <dxg:GridControl.View>
+                        <dxg:TableView x:Name="tableView" AllowEditing="False" NavigationStyle="Row" ShowGroupPanel="False" VerticalScrollbarVisibility="Auto" Margin="0,0,0,-2"/>
+                    </dxg:GridControl.View>
+                    <dxg:GridColumn Binding="{Binding Cmt_cmtnm}"  Header="위원회" Width="*"/>
+                    <dxg:GridColumn Binding="{Binding Cmt_sdate}"  Header="임명일자" Width="62"/>
+                    <dxg:GridColumn Binding="{Binding Cmt_edate}"  Header="임면일자" Width="62"/>
+
+                </dxg:GridControl>
+                <TextBlock Text="사원번호" Canvas.Left="30" Canvas.Top="358" Width="48" />
+                <TextBox x:Name="cmt_empno" Text="{Binding Cmt_empno, Mode=TwoWay, ValidatesOnDataErrors=True}"   Canvas.Left="93" Canvas.Top="352" Width="113" Height="23" />
+                <TextBox x:Name="bas_name" Canvas.Left="211" Canvas.Top="352" Width="120" Height="23" IsEnabled="False"/>
+
+                <TextBlock Text="위원회" Canvas.Left="30" Canvas.Top="384" Width="48" />
+                <TextBox x:Name="cmt_cmtnm" Text="{Binding Cmt_cmtnm, Mode=TwoWay, ValidatesOnDataErrors=True}" TabIndex="2" TextWrapping="Wrap" Focusable="True" MaxLength="10" Width="376" Height="23" Margin="0" Canvas.Left="93" Canvas.Top="380" />
+
+                <TextBlock Text="임명일자" Canvas.Left="30" Canvas.Top="411" Width="48" />
+                <DatePicker x:Name="cmt_sdate" Text="{Binding Cmt_sdate, Mode=TwoWay, ValidatesOnDataErrors=True}" Canvas.Left="93" TabIndex="3" Height="24" Canvas.Top="407" Width="154"/>
+
+                <TextBlock Text="임면일자" Canvas.Left="252" Canvas.Top="411" Width="48" RenderTransformOrigin="0.635,-0.5" />
+                <DatePicker x:Name="cmt_edate" Text="{Binding Cmt_edate, Mode=TwoWay, ValidatesOnDataErrors=True}" Canvas.Left="315" TabIndex="4" Height="24" Canvas.Top="407" Width="154"/>
+
+                <Image Height="21" Source="search1.png" MouseDown="Seach_user_id_MouseDown2" Canvas.Left="446" Canvas.Top="381" Width="22"/>
+            </Canvas>
+        </Border>
+
+    </Grid>
+</UserControl>

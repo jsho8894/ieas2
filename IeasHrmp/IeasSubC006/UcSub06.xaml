@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="IeasSubC06.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:local="clr-namespace:IeasSubC06"
+             xmlns:mylib="clr-namespace:IeasLibrary;assembly=IeasLibrary"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+             dx:ThemeManager.ThemeName="Office2013LightGray"
+             mc:Ignorable="d" 
+           d:DesignHeight="600" d:DesignWidth="1264" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="640"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="62"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Canvas Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBlock x:Name="textBlock" Text="사원번호" Canvas.Left="28" Canvas.Top="28"/>
+            <TextBox x:Name="sel_bas_empno" CharacterCasing="Upper" Height="23" Width="50" Canvas.Left="81" Canvas.Top="25"/>
+            <TextBlock x:Name="textBlock_Copy" Text="사원명" Canvas.Left="135" Canvas.Top="28"/>
+            <TextBox x:Name="sel_bas_name" CharacterCasing="Upper" Height="23" Width="50" Canvas.Left="175" Canvas.Top="25"/>
+            <TextBlock x:Name="textBlock_Copy1" Text="직급" Canvas.Left="446" Canvas.Top="28"/>
+            <ComboBox x:Name="sel_bas_pos" Height="23" Width="100" Canvas.Left="472" Canvas.Top="25"/>
+            <TextBlock x:Name="textBlock_Copy2" Text="소속" Canvas.Left="230" Canvas.Top="28"/>
+            <TextBox x:Name="sel_bas_dept" Height="23" Width="178" Canvas.Left="262" Canvas.Top="25"/>
+            <Image Height="21" Source="search1.png" MouseDown="Seach_user_id_MouseDown" Canvas.Left="416" Canvas.Top="27" Width="22"/>
+        </Canvas>
+
+        <dxg:GridControl Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" MouseDoubleClick="TableView2_MouseDoubleClick" AutoGenerateColumns="None" Margin="1,0,1,1" SelectionMode="None" x:Name="dataGrid2" >
+            <dxg:GridControl.View>
+                <dxg:TableView x:Name="tableView2" AllowEditing="False" NavigationStyle="Row" ShowGroupPanel="False" VerticalScrollbarVisibility="Auto" Margin="0,0,0,-2"/>
+            </dxg:GridControl.View>
+            <dxg:GridColumn Binding="{Binding BAS_EMPNO}"  Header="사원번호" Width="80" FieldName="pgm_id"/>
+            <dxg:GridColumn Binding="{Binding BAS_NAME}"  Header="성명" Width="100"/>
+            <dxg:GridColumn Binding="{Binding BAS_POS}"  Header="소속" Width="*"/>
+            <dxg:GridColumn Binding="{Binding BAS_DEPT}"  Header="직급" Width="*"/>
+        </dxg:GridControl>
+        <Border Grid.Column="1" Grid.Row="2" DataContext="{Binding SelectedItem, ElementName=dataGrid}"
+            BorderBrush="Gray" BorderThickness="1" Margin="1,1,1,0">
+            <Canvas Margin="1,0,0,0" Grid.Column="1" Grid.Row="2">
+                <dxg:GridControl Grid.Column="1" Grid.Row="1" AutoGenerateColumns="None" SelectionMode="None" Width="638" Height="320" Canvas.Top="0" x:Name="dataGrid">
+                    <dxg:GridControl.View>
+                        <dxg:TableView x:Name="tableView" AllowEditing="False" NavigationStyle="Row" ShowGroupPanel="False" VerticalScrollbarVisibility="Auto" Margin="0,0,0,-2"/>
+                    </dxg:GridControl.View>
+                    <dxg:GridColumn Binding="{Binding Lecc_sdate}"  Header="교육기간(시작)" Width="90"/>
+                    <dxg:GridColumn Binding="{Binding Lecc_edate}"  Header="교육기간(끝)" Width="90"/>
+                    <dxg:GridColumn Binding="{Binding Lecc_eduinst}"  Header="교육기관" Width="*"/>
+                    <dxg:GridColumn Binding="{Binding Lecc_position}"  Header="직책" Width="*"/>
+                    <dxg:GridColumn Binding="{Binding Lecc_career}"  Header="경력인정여부" Width="85">
+                        <dxg:GridColumn.CellTemplate>
+                            <DataTemplate>
+                                <dxe:CheckEdit IsChecked="{Binding RowData.Row.Lecc_career, Converter={mylib:YesNoBoolConverter}}" HorizontalAlignment="Center" IsReadOnly="True" />
+                            </DataTemplate>
+                        </dxg:GridColumn.CellTemplate>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn Binding="{Binding DataStatus}" Header="*" Visible="False"/>
+                    <dxg:GridColumn Binding="{Binding Key1}" Header="Key1" Visible="False" />
+                    <dxg:GridColumn Binding="{Binding Lecc_empno}" Header="empno" Visible="False" />
+                </dxg:GridControl>
+                <TextBlock Text="사원번호" Canvas.Left="30" Canvas.Top="351" Width="48" />
+                <TextBox x:Name="lecc_empno" Text="{Binding Lecc_empno, Mode=TwoWay, ValidatesOnDataErrors=True}" Canvas.Left="115" Canvas.Top="348" Width="85" />
+                <TextBox x:Name="bas_name" Canvas.Left="205" Canvas.Top="348" Width="90" IsEnabled="False" />
+                <TextBlock Text="교육기간(시작)" Canvas.Left="30" Canvas.Top="375"  />
+                <DatePicker x:Name="lecc_sdate" Text="{Binding Lecc_sdate, Mode=TwoWay, ValidatesOnDataErrors=True}" Canvas.Left="115" Height="24" Canvas.Top="372" Width="229"/>
+                <TextBlock Text="교육기간(종료)" Canvas.Left="30" Canvas.Top="403"  RenderTransformOrigin="0.371,0.501" />
+                <DatePicker x:Name="lecc_edate" Text="{Binding Lecc_edate, Mode=TwoWay, ValidatesOnDataErrors=True}" Canvas.Left="115" Height="24" Canvas.Top="399" Width="229"/>
+                <TextBlock Text="교육기관" Canvas.Left="30" Canvas.Top="429" Width="80" RenderTransformOrigin="0.635,-0.5" />
+                <TextBox x:Name="lecc_eduinst"  TabIndex="2" Focusable="True" MaxLength="10" Text="{Binding Lecc_eduinst, Mode=TwoWay, ValidatesOnDataErrors=True}" Width="493" Height="23" Margin="0" Canvas.Left="115" Canvas.Top="426"  />
+                <TextBlock Text="직책" Canvas.Left="30" Canvas.Top="456" Width="48" />
+                <TextBox x:Name="lecc_position" TabIndex="2" Focusable="True" MaxLength="10" Text="{Binding Lecc_position, Mode=TwoWay, ValidatesOnDataErrors=True}" Width="493" Height="23" Margin="0" Canvas.Left="115" Canvas.Top="453"  />
+                <TextBlock Text="경력인정여부" Canvas.Left="30" Canvas.Top="484" Width="80" />
+                <CheckBox x:Name="lecc_career" IsChecked="{Binding Lecc_career, Mode=TwoWay,Converter={mylib:YesNoBoolConverter}}" Content="" Canvas.Left="115" Canvas.Top="481"/>
+            </Canvas>
+        </Border>
+        
+    </Grid>
+</UserControl>

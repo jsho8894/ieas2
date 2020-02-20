@@ -1,0 +1,8 @@
+C:\Users\박준하\source\repos\새 폴더\IeasHrmp\IeasSubC017\obj\Debug\IeasSubC017.csprojAssemblyReference.cache
+C:\Users\박준하\source\repos\새 폴더\IeasHrmp\IeasSubC017\obj\Debug\UcSub017.g.cs
+C:\Users\박준하\source\repos\새 폴더\IeasHrmp\IeasSubC017\obj\Debug\IeasSubC017_MarkupCompile.cache
+C:\Users\박준하\source\repos\새 폴더\IeasHrmp\IeasSubC017\obj\Debug\IeasSubC017_MarkupCompile.lref
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC017\obj\Debug\IeasSubC017.csprojAssemblyReference.cache
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC017\obj\Debug\UcSub017.g.cs
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC017\obj\Debug\IeasSubC017_MarkupCompile.cache
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC017\obj\Debug\IeasSubC017_MarkupCompile.lref

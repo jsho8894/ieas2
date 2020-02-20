@@ -1,0 +1,16 @@
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC008\obj\Debug\IeasSubC08.csprojAssemblyReference.cache
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC008\obj\Debug\UcSubC08.g.cs
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC008\obj\Debug\IeasSubC08_MarkupCompile.cache
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC008\obj\Debug\IeasSubC08_MarkupCompile.lref
+C:\Ieas2020\sublibs\IeasSubC08.dll.config
+C:\Ieas2020\sublibs\IeasSubC08.dll
+C:\Ieas2020\sublibs\IeasSubC08.pdb
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC008\obj\Debug\UcSubC08.baml
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC008\obj\Debug\IeasSubC08.g.resources
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC008\obj\Debug\IeasSubC08.Properties.Resources.resources
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC008\obj\Debug\IeasSubC08.csproj.GenerateResource.cache
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC008\obj\Debug\IeasSubC08.dll.licenses
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC008\obj\Debug\IeasSubC08.csproj.CoreCompileInputs.cache
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC008\obj\Debug\IeasSubC08.csproj.CopyComplete
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC008\obj\Debug\IeasSubC08.dll
+C:\Users\bsks\Desktop\ieas2\IeasHrmp\IeasSubC008\obj\Debug\IeasSubC08.pdb
